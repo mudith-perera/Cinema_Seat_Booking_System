@@ -2,7 +2,6 @@ import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
-import javafx.scene.control.Alert;
 import org.bson.Document;
 
 import java.util.logging.Level;
@@ -34,7 +33,6 @@ public class DbConnection {
                 namesAndSeats.append("SecondName",secondName);
 
                 collectionNew.insertOne(namesAndSeats);
-
             }
             return true;
         }catch (Exception e){
@@ -69,11 +67,9 @@ public class DbConnection {
                 arr[i][0]= doc.getString("firstName");
                 arr[i][0]= doc.getString("SecondName");
             }
-            System.out.println("Successfully Loaded");
             return arr;
 
         }catch (Exception e){
-            System.out.println("Data loading failed");
             return null;
         }
     }
