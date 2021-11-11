@@ -79,7 +79,7 @@ public class GuiFunctions {
     //Creating a stage for the menu
     Stage stageMenu = new Stage();
     ///////////////////////////////////// Creating Dynamic Main Window (Start) //////////////////////////////////
-    public void mainMenuStage(GridPane gridPane){
+    public void mainMenuStage(GridPane gridPane,int closeStatus){
         stageMenu.setTitle("Cinema Seat Booking System");
         stageMenu.setResizable(false);
         stageMenu.getIcons().add(new Image("Resourses/icon.jpg"));
@@ -88,6 +88,9 @@ public class GuiFunctions {
         Scene scene = new Scene(gridPane, 700, 600);
         stageMenu.setScene(scene);
         stageMenu.show();
+        if (closeStatus==1){
+            stageMenu.close();
+        }
     }
     ///////////////////////////////////// Creating Dynamic Main Window (End) ////////////////////////////////////
 
@@ -102,12 +105,14 @@ public class GuiFunctions {
         mainGridPane.setPadding(new Insets(10, 15, 15, 10));
         mainGridPane.setStyle("-fx-background-image: url('Resourses/menu.jpg');-fx-background-size:cover;-fx-background-repeat: no-repeat;");
         //adding labels, text boxes and buttons
-        Button btnAddUser       = new Button(    " Add User ");
-        Button btnViewSeats     = new Button(  " View Seats ");
-        Button btnRemove        = new Button(     " Remove ");
+        Button btnAddUser       = new Button(" Add User ");
+        Button btnViewSeats     = new Button(" View Seats ");
+        Button btnRemove        = new Button(" Remove ");
         Button btnChangeMovie   = new Button(" Change Movie ");
-        Button btnFind          = new Button(       " Find ");
-        Button btnLogout        = new Button(     " Logout ");
+        Button btnFind          = new Button(" Find ");
+        Button btnLoad          = new Button(" Load Data ");
+        Button btnSave          = new Button(" Save Data ");
+        Button btnLogout        = new Button("");
 
         //styles
         btnAddUser.setStyle("-fx-font-size: 2em;-fx-pref-width:200px;-fx-font-size: 12pt;-fx-font-weight: bold;");
@@ -115,25 +120,38 @@ public class GuiFunctions {
         btnRemove.setStyle("-fx-font-size: 2em;-fx-pref-width:200px;-fx-font-size: 12pt;-fx-font-weight: bold;");
         btnChangeMovie.setStyle("-fx-font-size: 2em;-fx-pref-width:200px;-fx-font-size: 12pt;-fx-font-weight: bold;");
         btnFind.setStyle("-fx-font-size: 2em;-fx-pref-width:200px;-fx-font-size: 12pt;-fx-font-weight: bold;");
-        btnLogout.setStyle("-fx-font-size: 2em;-fx-pref-width:200px;-fx-font-size: 12pt;-fx-font-weight: bold;");
+        btnLoad.setStyle("-fx-font-size: 2em;-fx-pref-width:200px;-fx-font-size: 12pt;-fx-font-weight: bold;");
+        btnSave.setStyle("-fx-font-size: 2em;-fx-pref-width:200px;-fx-font-size: 12pt;-fx-font-weight: bold;");
+        btnLogout.setStyle("-fx-pref-width:60px;-fx-pref-height:40px;-fx-background-image: url(Resourses/logout.png);" +
+                "-fx-background-size: 30px 30px;-fx-background-repeat: no-repeat;-fx-background-position: center;");
+        GridPane.setHalignment(btnLogout, HPos.RIGHT);
+
+
         //adding to the grid pane
-        mainGridPane.add(btnAddUser,5,7);
-        mainGridPane.add(btnViewSeats,5,11);
-        mainGridPane.add(btnRemove,5,15);
-        mainGridPane.add(btnChangeMovie,9,7);
-        mainGridPane.add(btnFind,9,11);
-        mainGridPane.add(btnLogout,9,15);
+        mainGridPane.add(btnAddUser,5,5);
+        mainGridPane.add(btnViewSeats,9,5);
+        mainGridPane.add(btnRemove,5,8);
+        mainGridPane.add(btnChangeMovie,9,8);
+        mainGridPane.add(btnFind,5,11);
+        mainGridPane.add(btnSave,5,14);
+        mainGridPane.add(btnLoad,9,14);
+        mainGridPane.add(btnLogout,9,17);
+
+        mainMenuStage(mainGridPane,0);
 
         btnAddUser.setOnAction(actionEvent -> {
-            mainMenuStage(seatLayout());
+            mainMenuStage(seatLayout(),0);
         });
         btnViewSeats.setOnAction(actionEvent -> {
-            mainMenuStage(sceneSelectMovie());
+            mainMenuStage(sceneSelectMovie(),0);
+        });
+
+        btnLogout.setOnAction(actionEvent -> {
+            mainMenuStage(sceneSelectMovie(),1);
+            logIn();
         });
 
 
-
-        mainMenuStage(mainGridPane);
     }
     //////////////////////////////////////// Creating Menu Window (End) /////////////////////////////////////////
 
@@ -166,7 +184,7 @@ public class GuiFunctions {
         //Creating a loop to handle button processes
         for (int i = 0; i < 50; i++) {
             btnArray[i] = new Button("" + (i + 1));
-            btnArray[i].setStyle("-fx-focus-color: transparent;-fx-faint-focus-color: transparent;");
+            btnArray[i].setStyle("-fx-focus-color: transparent;-fx-faint-focus-color: blue;-fx-font-weight: bold;");
 
             //Adding buttons to the grid pane
             gridPane.add(btnArray[i],(x+4),(y+9));
@@ -307,13 +325,13 @@ public class GuiFunctions {
         gridPane.add(btnBack,2,21);
 
         btnMovieOne.setOnAction(actionEvent -> {
-            mainMenuStage(sceneView(1));
+            mainMenuStage(sceneView(1),0);
         });
         btnMovieTwo.setOnAction(actionEvent -> {
-            mainMenuStage(sceneView(2));
+            mainMenuStage(sceneView(2),0);
         });
         btnMovieThree.setOnAction(actionEvent -> {
-            mainMenuStage(sceneView(3));
+            mainMenuStage(sceneView(3),0);
         });
         btnBack.setOnAction(actionEvent -> {
             mainMenu();
@@ -339,7 +357,7 @@ public class GuiFunctions {
         Button btnBack = new Button("Back");
         gridPane.add(btnBack,3,16);
         btnBack.setOnAction(actionEvent -> {
-            mainMenuStage(sceneSelectMovie());
+            mainMenuStage(sceneSelectMovie(),0);
         });
 
         //x is column index and y is row index
@@ -348,7 +366,7 @@ public class GuiFunctions {
         //Creating a loop to handle button processes
         for (int i = 0; i < 50; i++) {
             btnArray[i] = new Button("" + (i + 1));
-            btnArray[i].setStyle("-fx-focus-color: transparent;-fx-faint-focus-color: transparent;");
+            btnArray[i].setStyle("-fx-focus-color: transparent;-fx-faint-focus-color: transparent;-fx-font-weight: bold;");
 
             //Showing only booked seats
             switch (movieNo){
