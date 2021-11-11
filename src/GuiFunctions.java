@@ -2,6 +2,7 @@ import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
@@ -146,12 +147,64 @@ public class GuiFunctions {
             mainMenuStage(sceneSelectMovie(),0);
         });
 
+        btnSave.setOnAction(actionEvent -> {
+            DbConnection dbConnection = new DbConnection();
+            dbConnection.storeData(Customer.getMovieOne(),1);
+            dbConnection.storeData(Customer.getMovieTwo(),2);
+            if (dbConnection.storeData(Customer.getMovieThree(),3)){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("Data Successfully Stored!");
+                alert.getDialogPane().setGraphic(new ImageView("Resourses/success.png"));
+                alert.show();
+            }else{
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Data Storing Error!");
+                alert.show();
+            }
+
+        });
+
+        btnLoad.setOnAction(actionEvent -> {
+            DbConnection dbConnection = new DbConnection();
+            String[][] arr1 = new String[50][2];
+            String[][] arr2 = new String[50][2];
+            String[][] arr3 = new String[50][2];
+            arr1=dbConnection.loadData(1);
+            arr2=dbConnection.loadData(2);
+            arr3=dbConnection.loadData(3);
+
+            if (arr1!=null){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("Data Successfully Loaded!");
+                alert.getDialogPane().setGraphic(new ImageView("Resourses/success.png"));
+                alert.show();
+            }else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Data Loading Failed!");
+                alert.show();
+            }
+
+            for (int i = 0; i < 50; i++) {
+                String fName = arr1[i][0];
+                String sName = arr1[i][1];
+                Customer customer = new Customer(fName,sName,i+1,1);
+            }
+            for (int i = 0; i < 50; i++) {
+                String fName = arr2[i][0];
+                String sName = arr2[i][1];
+                Customer customer = new Customer(fName,sName,i+1,2);
+            }
+            for (int i = 0; i < 50; i++) {
+                String fName = arr3[i][0];
+                String sName = arr3[i][1];
+                Customer customer = new Customer(fName,sName,i+1,3);
+            }
+        });
+
         btnLogout.setOnAction(actionEvent -> {
             mainMenuStage(sceneSelectMovie(),1);
             logIn();
         });
-
-
     }
     //////////////////////////////////////// Creating Menu Window (End) /////////////////////////////////////////
 
@@ -281,13 +334,30 @@ public class GuiFunctions {
         });
 
         btnSave.setOnAction(actionEvent -> {
-            //Get inputs from text fields
-            String firstName = (txtFirstName.getText()).toLowerCase();
-            String secondName = (txtSecondName.getText()).toLowerCase();
-            int movieNumber = Integer.parseInt(txtMovieNo.getText());
-            //Creating an object for customer class
-            Customer customer = new Customer(firstName,secondName,seatNo,movieNumber);
-            stage.close();
+            //rangeCheck
+            int movieNo=1;
+            try {
+                movieNo = Integer.parseInt(txtMovieNo.getText());
+                if(Functions.rangeCheck(1,3,movieNo)){
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText("Range Must be 1-3!");
+                    alert.show();
+                }else{
+                    //Get inputs from text fields
+                    String firstName = (txtFirstName.getText()).toLowerCase();
+                    String secondName = (txtSecondName.getText()).toLowerCase();
+                    //Creating an object for customer class
+
+                    Customer customer = new Customer(firstName,secondName,seatNo,movieNo);
+                    stage.close();
+                }
+
+            }catch (NumberFormatException e){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Please Enter only a Number for Movie Number!");
+                alert.show();
+            }
+
         });
 
         Scene scene = new Scene(gridPane,400,450);

@@ -11,20 +11,14 @@ public class Customer {
             case 1:
                 movieOne[seatNo-1][0] = fName;
                 movieOne[seatNo-1][1] = sName;
-                System.out.println("m1");
-                printArray(movieOne);
                 break;
             case 2:
                 movieTwo[seatNo-1][0] = fName;
                 movieTwo[seatNo-1][1] = sName;
-                System.out.println("m2");
-                printArray(movieTwo);
                 break;
             case 3:
                 movieThree[seatNo-1][0] = fName;
                 movieThree[seatNo-1][1] = sName;
-                System.out.println("m3");
-                printArray(movieThree);
                 break;
         }
     }

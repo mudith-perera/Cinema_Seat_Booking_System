@@ -7,4 +7,8 @@ public class Functions {
             return true;
         }
     }
+
+    public static boolean rangeCheck(int start,int end,int check){
+        return(check < start || check > end);
+    }
 }
