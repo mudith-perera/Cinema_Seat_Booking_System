@@ -8,7 +8,6 @@ public class CinemaHall extends Application {
         GuiFunctions guiFunctions = new GuiFunctions();
         //guiFunctions.logIn();
         guiFunctions.mainMenu();
-        System.out.println("test");
 
     }
     public static void main(String [] cake){
