@@ -1,0 +1,13 @@
+Change Movie Option
+	1. Search customer name and get his movie no
+	2. Change Movie No
+		-if new movie seat is booked, show and error "Seat is booked, cannot change movies!"
+		-else change movies
+
+Find Option
+	1. Search customer name and get his Second name,Movie no,seat no;
+		-if customer name not exists display error "name not found!"
+
+Remove Option
+	1. Search Customer name and get his details, and delete
+	2. Search Seat No and get customer detals, and delete
