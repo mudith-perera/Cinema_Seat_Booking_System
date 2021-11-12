@@ -152,6 +152,7 @@ public class GuiFunctions {
             dbConnection.storeData(Customer.getMovieTwo(),2);
             if (dbConnection.storeData(Customer.getMovieThree(),3)){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText("Success!");
                 alert.setContentText("Data Successfully Stored!");
                 alert.getDialogPane().setGraphic(new ImageView("Resourses/success.png"));
                 alert.show();
@@ -174,6 +175,7 @@ public class GuiFunctions {
 
             if (arr1!=null){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText("Success!");
                 alert.setContentText("Data Successfully Loaded!");
                 alert.getDialogPane().setGraphic(new ImageView("Resourses/success.png"));
                 alert.show();
@@ -272,7 +274,7 @@ public class GuiFunctions {
         gridPane.setVgap(20);
         //margins around the whole grid
         gridPane.setPadding(new Insets(10, 15, 15, 10));
-        gridPane.setStyle("-fx-background-image: url('Resourses/add.png');-fx-background-size:cover;-fx-background-repeat: no-repeat;");
+        gridPane.setStyle("-fx-background-image: url('Resourses/Login.png');-fx-background-size:cover;-fx-background-repeat: no-repeat;");
 
         //Creating Elements
         Label lblFirstName          = new Label("Enter First Name   : ");
@@ -353,6 +355,11 @@ public class GuiFunctions {
                     //Creating an object for customer class
 
                     Customer customer = new Customer(firstName,secondName,seatNo,movieNo);
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setHeaderText("Success!");
+                    alert.setContentText(firstName+" Saved to Movie "+movieNo+ " Seat no: "+seatNo);
+                    alert.getDialogPane().setGraphic(new ImageView("Resourses/success.png"));
+                    alert.show();
                     stage.close();
                 }
 
@@ -500,33 +507,29 @@ public class GuiFunctions {
         gridPane.setVgap(20);
         //margins around the whole grid
         gridPane.setPadding(new Insets(10, 15, 15, 10));
+        gridPane.setStyle("-fx-background-image: url('Resourses/Login.png');-fx-background-size:cover;" +
+                "-fx-background-repeat: no-repeat;");
 
         //Creating Elements
-        Label lblFirstName          = new Label("First Name   : ");
-        TextField txtFirstName      = new TextField();
-        Label lblSecondName         = new Label("Second Name  : ");
-        TextField txtSecondName     = new TextField();
-        Label lblSeatNo             = new Label("Seat No      : ");
-        TextField txtSeatNo         = new TextField();
-        Label lblMovieNo            = new Label("Movie No     : ");
-        TextField txtMovieNo        = new TextField();
+        Label lblFirstName          = new Label("First Name\t\t: ");
+        Label lblFirstNameShow          = new Label();
+        Label lblSecondName         = new Label("Second Name\t\t: ");
+        Label lblSecondNameShow         = new Label();
+        Label lblSeatNo             = new Label("Seat No\t\t\t: ");
+        Label lblSeatNoShow             = new Label();
+        Label lblMovieNo            = new Label("Movie No\t\t\t: ");
+        Label lblMovieNoShow            = new Label();
         Button btnBack              = new Button(" Back ");
 
-        //making non editable
-        txtFirstName.setEditable(false);
-        txtSecondName.setEditable(false);
-        txtMovieNo.setEditable(false);
-        txtSeatNo.setEditable(false);
-
         //adding elements to grid pane
-        gridPane.add(lblFirstName,3,4);
-        gridPane.add(txtFirstName,4,4);
-        gridPane.add(lblSecondName,3,5);
-        gridPane.add(txtSecondName,4,5);
-        gridPane.add(lblSeatNo,3,6);
-        gridPane.add(txtSeatNo,4,6);
-        gridPane.add(lblMovieNo,3,7);
-        gridPane.add(txtMovieNo,4,7);
+        gridPane.add(lblFirstName,3,3);
+        gridPane.add(lblFirstNameShow,4,3);
+        gridPane.add(lblSecondName,3,4);
+        gridPane.add(lblSecondNameShow,4,4);
+        gridPane.add(lblSeatNo,3,5);
+        gridPane.add(lblSeatNoShow,4,5);
+        gridPane.add(lblMovieNo,3,6);
+        gridPane.add(lblMovieNoShow,4,6);
         gridPane.add(btnBack,3,8);
 
         btnBack.setOnAction(actionEvent -> {
@@ -538,34 +541,34 @@ public class GuiFunctions {
         switch (movieNo){
             case 1:
                 arrMovie = Customer.getMovieOne();
-                txtFirstName.setText(arrMovie[seatNo][0]);
-                txtSecondName.setText(arrMovie[seatNo][1]);
-                if(txtFirstName.getText()!=null){
-                    txtSeatNo.setText(Integer.toString(seatNo+1));
-                    txtMovieNo.setText(Integer.toString(movieNo));
+                lblFirstNameShow.setText(arrMovie[seatNo][0]);
+                lblSecondNameShow.setText(arrMovie[seatNo][1]);
+                if(lblFirstNameShow.getText()!=null){
+                    lblSeatNoShow.setText(Integer.toString(seatNo+1));
+                    lblMovieNoShow.setText(Integer.toString(movieNo));
                 }
                 break;
             case 2:
                 arrMovie = Customer.getMovieTwo();
-                txtFirstName.setText(arrMovie[seatNo][0]);
-                txtSecondName.setText(arrMovie[seatNo][1]);
-                if(txtFirstName.getText()!=null){
-                    txtSeatNo.setText(Integer.toString(seatNo+1));
-                    txtMovieNo.setText(Integer.toString(movieNo));
+                lblFirstNameShow.setText(arrMovie[seatNo][0]);
+                lblSecondNameShow.setText(arrMovie[seatNo][1]);
+                if(lblFirstNameShow.getText()!=null){
+                    lblSeatNoShow.setText(Integer.toString(seatNo+1));
+                    lblMovieNoShow.setText(Integer.toString(movieNo));
                 }
                 break;
             case 3:
                 arrMovie = Customer.getMovieThree();
-                txtFirstName.setText(arrMovie[seatNo][0]);
-                txtSecondName.setText(arrMovie[seatNo][1]);
-                if(txtFirstName.getText()!=null){
-                    txtSeatNo.setText(Integer.toString(seatNo+1));
-                    txtMovieNo.setText(Integer.toString(movieNo));
+                lblFirstNameShow.setText(arrMovie[seatNo][0]);
+                lblSecondNameShow.setText(arrMovie[seatNo][1]);
+                if(lblFirstNameShow.getText()!=null){
+                    lblSeatNoShow.setText(Integer.toString(seatNo+1));
+                    lblMovieNoShow.setText(Integer.toString(movieNo));
                 }
                 break;
         }
 
-        Scene scene = new Scene(gridPane,400,450);
+        Scene scene = new Scene(gridPane,300,300);
         stage.setScene(scene);
         stage.show();
 
