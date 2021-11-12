@@ -65,7 +65,7 @@ public class DbConnection {
                 //line by line will be retrieve to doc
                 Document doc = cursor.next();
                 arr[i][0]= doc.getString("firstName");
-                arr[i][0]= doc.getString("SecondName");
+                arr[i][1]= doc.getString("SecondName");
             }
             return arr;
 

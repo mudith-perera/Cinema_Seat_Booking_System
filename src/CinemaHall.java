@@ -6,8 +6,8 @@ public class CinemaHall extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         GuiFunctions guiFunctions = new GuiFunctions();
-        //guiFunctions.logIn();
-        guiFunctions.mainMenu();
+        guiFunctions.logIn();
+        //guiFunctions.mainMenu();
 
     }
     public static void main(String [] cake){

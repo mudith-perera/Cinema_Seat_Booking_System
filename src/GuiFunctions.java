@@ -22,7 +22,7 @@ public class GuiFunctions {
         gridPane.setVgap(20);
         //margins around the whole grid
         gridPane.setPadding(new Insets(10, 15, 15, 10));
-        gridPane.setStyle("-fx-background-image: url('Resourses/Login.jpg');-fx-background-cover: contain;-fx-background-repeat: no-repeat;");
+        gridPane.setStyle("-fx-background-image: url('Resourses/Login.png');-fx-background-cover: contain;-fx-background-repeat: no-repeat;");
 
         //Creating elements
         Label lblLoginStage     = new Label("  Login");
@@ -104,7 +104,7 @@ public class GuiFunctions {
         mainGridPane.setVgap(20);
         //margins around the whole grid
         mainGridPane.setPadding(new Insets(10, 15, 15, 10));
-        mainGridPane.setStyle("-fx-background-image: url('Resourses/menu.jpg');-fx-background-size:cover;-fx-background-repeat: no-repeat;");
+        mainGridPane.setStyle("-fx-background-image: url('Resourses/menu.png');-fx-background-size:cover;-fx-background-repeat: no-repeat;");
         //adding labels, text boxes and buttons
         Button btnAddUser       = new Button(" Add User ");
         Button btnViewSeats     = new Button(" View Seats ");
@@ -116,17 +116,16 @@ public class GuiFunctions {
         Button btnLogout        = new Button("");
 
         //styles
-        btnAddUser.setStyle("-fx-font-size: 2em;-fx-pref-width:200px;-fx-font-size: 12pt;-fx-font-weight: bold;");
-        btnViewSeats.setStyle("-fx-font-size: 2em;-fx-pref-width:200px;-fx-font-size: 12pt;-fx-font-weight: bold;");
-        btnRemove.setStyle("-fx-font-size: 2em;-fx-pref-width:200px;-fx-font-size: 12pt;-fx-font-weight: bold;");
-        btnChangeMovie.setStyle("-fx-font-size: 2em;-fx-pref-width:200px;-fx-font-size: 12pt;-fx-font-weight: bold;");
-        btnFind.setStyle("-fx-font-size: 2em;-fx-pref-width:200px;-fx-font-size: 12pt;-fx-font-weight: bold;");
-        btnLoad.setStyle("-fx-font-size: 2em;-fx-pref-width:200px;-fx-font-size: 12pt;-fx-font-weight: bold;");
-        btnSave.setStyle("-fx-font-size: 2em;-fx-pref-width:200px;-fx-font-size: 12pt;-fx-font-weight: bold;");
+        btnAddUser.setStyle("-fx-font-size: 2em;-fx-pref-width:200px;-fx-font-size: 12pt;-fx-font-weight: bold;-fx-focus-color:transparent;-fx-faint-focus-color: transparent;");
+        btnViewSeats.setStyle("-fx-font-size: 2em;-fx-pref-width:200px;-fx-font-size: 12pt;-fx-font-weight: bold;-fx-focus-color:transparent;-fx-faint-focus-color: transparent;");
+        btnRemove.setStyle("-fx-font-size: 2em;-fx-pref-width:200px;-fx-font-size: 12pt;-fx-font-weight: bold;-fx-focus-color:transparent;-fx-faint-focus-color: transparent;");
+        btnChangeMovie.setStyle("-fx-font-size: 2em;-fx-pref-width:200px;-fx-font-size: 12pt;-fx-font-weight: bold;-fx-focus-color:transparent;-fx-faint-focus-color: transparent;");
+        btnFind.setStyle("-fx-font-size: 2em;-fx-pref-width:200px;-fx-font-size: 12pt;-fx-font-weight: bold;-fx-focus-color:transparent;-fx-faint-focus-color: transparent;");
+        btnLoad.setStyle("-fx-font-size: 2em;-fx-pref-width:200px;-fx-font-size: 12pt;-fx-font-weight: bold;-fx-focus-color:transparent;-fx-faint-focus-color: transparent;");
+        btnSave.setStyle("-fx-font-size: 2em;-fx-pref-width:200px;-fx-font-size: 12pt;-fx-font-weight: bold;-fx-focus-color:transparent;-fx-faint-focus-color: transparent;");
         btnLogout.setStyle("-fx-pref-width:60px;-fx-pref-height:40px;-fx-background-image: url(Resourses/logout.png);" +
-                "-fx-background-size: 30px 30px;-fx-background-repeat: no-repeat;-fx-background-position: center;");
+                "-fx-background-size: 30px 30px;-fx-background-repeat: no-repeat;-fx-background-position: center;-fx-focus-color:transparent;-fx-faint-focus-color: transparent;");
         GridPane.setHalignment(btnLogout, HPos.RIGHT);
-
 
         //adding to the grid pane
         mainGridPane.add(btnAddUser,5,5);
@@ -212,7 +211,7 @@ public class GuiFunctions {
     public GridPane seatLayout(){
         GridPane gridPane = new GridPane();
         //Adding styles to the grid pane
-        gridPane.setStyle("-fx-background-image: url('Resourses/menu.jpg');-fx-background-size:cover;" +
+        gridPane.setStyle("-fx-background-image: url('Resourses/menu.png');-fx-background-size:cover;" +
                 "-fx-background-repeat: no-repeat;");
         //horizontal gap in pixels
         gridPane.setHgap(20);
@@ -237,7 +236,7 @@ public class GuiFunctions {
         //Creating a loop to handle button processes
         for (int i = 0; i < 50; i++) {
             btnArray[i] = new Button("" + (i + 1));
-            btnArray[i].setStyle("-fx-focus-color: transparent;-fx-faint-focus-color: blue;-fx-font-weight: bold;");
+            btnArray[i].setStyle("-fx-focus-color: #DFFF00;-fx-faint-focus-color: #DFFF00;-fx-font-weight: bold;");
 
             //Adding buttons to the grid pane
             gridPane.add(btnArray[i],(x+4),(y+9));
@@ -273,6 +272,7 @@ public class GuiFunctions {
         gridPane.setVgap(20);
         //margins around the whole grid
         gridPane.setPadding(new Insets(10, 15, 15, 10));
+        gridPane.setStyle("-fx-background-image: url('Resourses/add.png');-fx-background-size:cover;-fx-background-repeat: no-repeat;");
 
         //Creating Elements
         Label lblFirstName          = new Label("Enter First Name   : ");
@@ -308,6 +308,10 @@ public class GuiFunctions {
         lblMovieOneInfo.setStyle("-fx-text-fill: red;-fx-font-weight: bold;");
         lblMovieTwoInfo.setStyle("-fx-text-fill: red;-fx-font-weight: bold;");
         lblMovieThreeInfo.setStyle("-fx-text-fill: red;-fx-font-weight: bold;");
+        lblFirstName.setStyle("-fx-font-weight: bold;");
+        lblSecondName.setStyle("-fx-font-weight: bold;");
+        lblSeatNo.setStyle("-fx-font-weight: bold;");
+        lblMovieNo.setStyle("-fx-font-weight: bold;");
 
         //Checking already booked seats
         Functions functions = new Functions();
@@ -368,7 +372,7 @@ public class GuiFunctions {
     public GridPane sceneSelectMovie(){
         GridPane gridPane = new GridPane();
         //Adding styles to the grid pane
-        gridPane.setStyle("-fx-background-image: url('Resourses/menu.jpg');-fx-background-size:cover;" +
+        gridPane.setStyle("-fx-background-image: url('Resourses/menu.png');-fx-background-size:cover;" +
                 "-fx-background-repeat: no-repeat;");
         //horizontal gap in pixels
         gridPane.setHgap(20);
@@ -412,7 +416,7 @@ public class GuiFunctions {
     public GridPane sceneView(int movieNo){
         GridPane gridPane = new GridPane();
         //Adding styles to the grid pane
-        gridPane.setStyle("-fx-background-image: url('Resourses/menu.jpg');-fx-background-size:cover;" +
+        gridPane.setStyle("-fx-background-image: url('Resourses/menu.png');-fx-background-size:cover;" +
                 "-fx-background-repeat: no-repeat;");
         //horizontal gap in pixels
         gridPane.setHgap(20);
